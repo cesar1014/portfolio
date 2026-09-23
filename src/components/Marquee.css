@@ -1,0 +1,62 @@
+/* Fita no ritmo de uma cartela de créditos: serifa grande,
+   separadores em fio, fundo transparente. */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding-block: 20px;
+  border-block: 1px solid var(--border);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 44s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee__list {
+  display: flex;
+  align-items: center;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding-inline: 24px;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  letter-spacing: -0.01em;
+  color: var(--text-dim);
+  white-space: nowrap;
+  transition: color 0.4s var(--ease-out);
+}
+
+.marquee__item:hover {
+  color: var(--text);
+  font-style: italic;
+}
+
+.marquee__dot {
+  width: 10px;
+  height: 1px;
+  background: var(--accent);
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}

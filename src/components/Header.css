@@ -1,0 +1,196 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: var(--accent);
+}
+
+/* Sem backdrop-filter em lugar nenhum: sobre um fundo animado ele
+   obriga o compositor a reamostrar o viewport a cada frame, e em
+   alguns navegadores chega a deixar o quadro em branco no scroll.
+   Um fundo quase opaco dá a mesma leitura de graça. */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.4s var(--ease-soft),
+    border-color 0.4s var(--ease-soft);
+}
+
+.header[data-scrolled='true'] {
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  border-bottom-color: var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+}
+
+/* marca */
+.header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex: none;
+}
+
+.header__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  background: var(--accent-fill);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.header__brand-text {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+}
+
+.header__brand-accent {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* navegação */
+.header__nav {
+  display: none;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 28px);
+}
+
+@media (min-width: 980px) {
+  .header__nav {
+    display: flex;
+  }
+}
+
+.header__link {
+  position: relative;
+  padding-block: 6px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease-out);
+}
+
+.header__link:hover {
+  color: var(--text);
+}
+
+.header__link[data-active='true'] {
+  color: var(--text);
+}
+
+/* Fio que desliza entre as seções, no lugar da pílula. */
+.header__link-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ações */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.header__burger {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition:
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out);
+}
+
+.header__burger:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (min-width: 980px) {
+  .header__burger {
+    display: none;
+  }
+}
+
+/* menu do celular */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: grid;
+  place-items: center;
+  padding: var(--header-h) 24px 40px;
+  background: color-mix(in srgb, var(--bg) 98%, transparent);
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 100%);
+  border-top: 1px solid var(--border);
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: var(--text-soft);
+  transition: color 0.3s var(--ease-out);
+}
+
+.mobile-menu__link[data-active='true'],
+.mobile-menu__link:hover {
+  color: var(--text);
+}
+
+.mobile-menu__link[data-active='true'] {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.mobile-menu__index {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  font-style: normal;
+}

@@ -1,0 +1,107 @@
+/* Bloco de fechamento no formato de colofão: fios em cima e
+   embaixo, tudo centrado, nenhuma caixa com sombra. */
+.contact__card {
+  position: relative;
+  padding: clamp(44px, 7vw, 84px) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.contact__glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: min(760px, 100%);
+  height: 100%;
+  background: radial-gradient(60% 46% at 50% 0%, var(--accent-soft) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.contact__card > * {
+  position: relative;
+}
+
+.contact__card .eyebrow {
+  justify-content: center;
+}
+
+.contact__card .eyebrow::after {
+  display: none;
+}
+
+.contact__title {
+  font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+  margin-bottom: 20px;
+}
+
+.contact__lead {
+  color: var(--text-soft);
+  font-size: clamp(0.98rem, 1.7vw, 1.08rem);
+  line-height: 1.68;
+  max-width: 54ch;
+  margin: 0 auto 34px;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.contact__copy {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.contact__copy-text {
+  min-width: 15ch;
+  text-align: left;
+}
+
+.contact__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 24px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+}
+
+.contact__foot-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.contact__socials {
+  display: flex;
+  gap: 6px;
+}
+
+.contact__social {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition:
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out);
+}
+
+.contact__social:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

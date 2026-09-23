@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="theme-color" content="#0c0b0a" />
+
+    <title>Cesar Santana — Design, código e câmera</title>
+    <meta
+      name="description"
+      content="Cesar Santana — produtor audiovisual, designer e desenvolvedor full stack em Barretos/SP. Desenho a tela, construo a tela e filmo o vídeo que apresenta ela."
+    />
+    <meta name="author" content="Cesar Santana" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cesar Santana — Design, código e câmera" />
+    <meta
+      property="og:description"
+      content="Produtor audiovisual e designer no Hospital de Amor, e desenvolvedor full stack."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Aplica o tema antes do primeiro paint para não haver flash de tela branca.
+      (function () {
+        try {
+          var saved = localStorage.getItem('cs-theme')
+          document.documentElement.dataset.theme = saved === 'light' ? 'light' : 'dark'
+          var lang = localStorage.getItem('cs-lang')
+          document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR'
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

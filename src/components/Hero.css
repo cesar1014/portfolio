@@ -1,0 +1,193 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-h) + 36px);
+  padding-bottom: 92px;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 52px;
+}
+
+@media (min-width: 1000px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 48px;
+  }
+}
+
+.hero__text {
+  max-width: 660px;
+}
+
+/* Status em linha de metadado, não em pílula com bolinha verde. */
+.hero__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.hero__status-mark {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  flex: none;
+}
+
+.hero__greeting {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+/* nome */
+.hero__name {
+  font-size: clamp(3.4rem, 12vw, 7.4rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px;
+}
+
+.hero__name-line {
+  display: block;
+}
+
+.hero__name-accent {
+  font-style: italic;
+  color: var(--accent);
+  /* O itálico do Instrument Serif tem muito avanço à direita;
+     o recuo negativo realinha o "S" com a linha de cima. */
+  margin-left: -0.02em;
+}
+
+/* papel rotativo */
+.hero__role {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  margin-bottom: 26px;
+  padding-left: 14px;
+  border-left: 1px solid var(--accent);
+}
+
+.hero__role-viewport {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 26px;
+  flex: 1;
+  min-width: 0;
+}
+
+.hero__role-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+  letter-spacing: 0.02em;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+.hero__lead {
+  color: var(--text-soft);
+  font-size: clamp(1rem, 1.7vw, 1.1rem);
+  line-height: 1.65;
+  max-width: 54ch;
+  margin-bottom: 32px;
+}
+
+/* botões */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.hero__socials {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+}
+
+.hero__social {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition:
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out);
+}
+
+.hero__social:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero__place {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  max-width: 54ch;
+}
+
+/* indicação de scroll */
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease-out);
+}
+
+.hero__scroll:hover {
+  color: var(--accent);
+}
+
+.hero__scroll-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+@media (max-width: 760px) {
+  .hero__scroll {
+    display: none;
+  }
+}

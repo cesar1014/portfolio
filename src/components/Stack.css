@@ -1,0 +1,89 @@
+/* Colunas de um índice impresso: número, título, fio, lista. */
+.stack__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.stack__card {
+  position: relative;
+  padding: 26px clamp(16px, 2vw, 24px) 30px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transition: background-color 0.4s var(--ease-out);
+}
+
+.stack__card:hover {
+  background: var(--surface);
+}
+
+/* Fio de acento no topo da coluna sob o cursor. */
+.stack__card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.stack__card:hover::before {
+  transform: scaleX(1);
+}
+
+.stack__card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.stack__index {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.stack__card-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.stack__items {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.stack__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.87rem;
+  color: var(--text-soft);
+  transition: color 0.3s var(--ease-out);
+}
+
+.stack__item:hover {
+  color: var(--text);
+}
+
+.stack__bullet {
+  width: 7px;
+  height: 1px;
+  background: var(--border-strong);
+  flex: none;
+  transition: background-color 0.3s var(--ease-out);
+}
+
+.stack__item:hover .stack__bullet {
+  background: var(--accent);
+}

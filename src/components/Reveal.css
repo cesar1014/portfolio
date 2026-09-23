@@ -1,0 +1,24 @@
+/* O padding/margin em espelho dá folga para as descidas do "g" e
+   do "q" sem que a máscara as corte quando a palavra está parada. */
+.reveal__word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.reveal__word + .reveal__word {
+  margin-left: 0.26em;
+}
+
+.reveal__inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal__inner {
+    transform: none !important;
+  }
+}

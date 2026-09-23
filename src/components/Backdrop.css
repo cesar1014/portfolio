@@ -1,0 +1,95 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Uma única lavagem de luz quente, vinda de cima à esquerda.
+   Substitui as três manchas coloridas que davam cara de template. */
+.backdrop__wash {
+  position: absolute;
+  inset: 0;
+  opacity: var(--wash-opacity);
+  background:
+    radial-gradient(
+      90% 62% at 14% -12%,
+      color-mix(in srgb, var(--accent) 22%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 7%, transparent) 34%,
+      transparent 68%
+    ),
+    radial-gradient(70% 50% at 92% 8%, var(--surface) 0%, transparent 62%);
+  transition: opacity 0.6s var(--ease-soft);
+}
+
+/* Os fios verticais do grid de diagramação. Cinco colunas
+   centradas no mesmo container do conteúdo, então o texto do
+   site se apoia neles em vez de flutuar por cima. */
+.backdrop__columns {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 44px);
+  mask-image: linear-gradient(180deg, transparent, #000 14%, #000 84%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 14%, #000 84%, transparent);
+}
+
+.backdrop__column {
+  border-left: 1px solid var(--border);
+  opacity: 0.6;
+}
+
+.backdrop__column:first-child {
+  border-left-color: transparent;
+}
+
+@media (max-width: 760px) {
+  /* Em tela estreita cinco colunas viram listras. Ficam duas. */
+  .backdrop__columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Grão de filme — apropriado para quem trabalha com imagem, e
+   é o que impede a lavagem de virar uma faixa lisa de banding.
+   A camada cobre exatamente o viewport e o movimento vem de
+   background-position: um elemento gigante com transform
+   animado criaria uma layer de vários megapixels. */
+.backdrop__grain {
+  position: absolute;
+  inset: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grain 8s steps(5) infinite;
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  20% {
+    background-position: -30px -20px;
+  }
+  40% {
+    background-position: 25px -35px;
+  }
+  60% {
+    background-position: -20px 30px;
+  }
+  80% {
+    background-position: 35px 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop__grain {
+    animation: none;
+  }
+}
