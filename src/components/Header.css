@@ -45,22 +45,7 @@
 .header__brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
   flex: none;
-}
-
-.header__mark {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 2px;
-  background: var(--accent-fill);
-  color: var(--accent-ink);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
 }
 
 .header__brand-text {

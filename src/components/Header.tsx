@@ -60,9 +60,6 @@ export function Header() {
       <header className="header" data-scrolled={scrolled}>
         <div className="header__inner container">
           <a href="#home" className="header__brand" onClick={() => setMenuOpen(false)}>
-            <span className="header__mark" aria-hidden="true">
-              CS
-            </span>
             <span className="header__brand-text">
               Cesar <span className="header__brand-accent">Santana</span>
             </span>
